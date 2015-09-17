@@ -1,11 +1,14 @@
 #!/usr/bin/ruby
 
+#imports
 require 'launchy'
 require 'open-uri'
+#end imports
+
+#settings
 searchEngineBaseUrl = 'https://google.com/#q='
-
-
-
+searchEngineBaseUrl.freeze
+#end settings
 
 #detect yaourt
 isYaourtInstalled = File.exists? '/usr/bin/yaourt'
@@ -17,13 +20,13 @@ end
 
 #check for updates
 yaourt = open('|sudo yaourt -Qua')
-out = yaourt.readlines
+yaourtOutput = yaourt.readlines
 yaourt.close
-out.each do |line|
+yaourtOutput.each do |line|
 	upgrade = line.split(' ')
 	packageName = upgrade[0].split('/')[1]
 	newVersion = upgrade[-1].split('-')[0..-2] * ""
-	url = searchEngineBaseUrl
+	url = String.new(searchEngineBaseUrl)
 	url << URI::encode(packageName)
 	url << URI::encode(' release notes ')
 	url << URI::encode(newVersion)
