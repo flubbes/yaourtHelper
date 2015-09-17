@@ -7,8 +7,8 @@ require 'open-uri'
 
 #settings
 searchEngineBaseUrl = 'https://google.com/#q='
-searchEngineBaseUrl.freeze
 #end settings
+searchEngineBaseUrl.freeze
 
 #detect yaourt
 isYaourtInstalled = File.exists? '/usr/bin/yaourt'
