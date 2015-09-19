@@ -19,7 +19,7 @@ if !isYaourtInstalled
 end
 
 #check for updates
-yaourt = open('|sudo yaourt -Qua')
+yaourt = open('|yaourt -Qua')
 yaourtOutput = yaourt.readlines
 yaourt.close
 yaourtOutput.each do |line|
